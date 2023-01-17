@@ -1,9 +1,11 @@
 package com.example.news.adapters
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.news.R
 import com.example.news.models.ArticleX
 
 class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
@@ -21,7 +23,13 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        TODO("Not yet implemented")
+        return MyHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.news_article,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
