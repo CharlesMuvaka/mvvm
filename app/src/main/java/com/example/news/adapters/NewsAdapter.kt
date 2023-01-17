@@ -45,8 +45,19 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
             tvDescription.text = newsArticle.description
             tvPublishedAt.text = newsArticle.publishedAt
             Glide.with(this).load(newsArticle.urlToImage).into(ivArticleImage)
+
+            setOnClickListener{
+                onItemClick?.let { it(newsArticle) }
+            }
+
         }
     }
 
     override fun getItemCount() = listDiffer.currentList.size
+
+    private var onItemClick: ((ArticleX )-> Unit)? = null
+
+    fun setItemClick(listener: ((ArticleX )-> Unit)){
+        onItemClick = listener
+    }
 }
