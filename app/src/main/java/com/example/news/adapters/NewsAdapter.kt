@@ -3,6 +3,7 @@ package com.example.news.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.news.R
@@ -22,6 +23,8 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
 
     }
 
+    var listDiffer = AsyncListDiffer(this, diffUtil)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         return MyHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -36,7 +39,5 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
         TODO("Not yet implemented")
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() =
 }
