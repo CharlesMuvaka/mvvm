@@ -39,5 +39,5 @@ class NewsAdapter:RecyclerView.Adapter<NewsAdapter.MyHolder>() {
         TODO("Not yet implemented")
     }
 
-    override fun getItemCount() =
+    override fun getItemCount() = listDiffer.currentList.size
 }
