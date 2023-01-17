@@ -8,5 +8,5 @@ import com.example.news.models.ArticleX
 @Dao
 interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addArticle(article:ArticleX)
+    suspend fun upsert(article:ArticleX):Long //inserts or updates an entity in the db
 }
