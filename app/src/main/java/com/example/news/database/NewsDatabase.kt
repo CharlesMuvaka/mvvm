@@ -1,15 +1,15 @@
 package com.example.news.database
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.example.news.converters.Converter
 import com.example.news.models.ArticleX
 
 @Database(
     entities = [ArticleX::class],
     version = 1
 )
+@TypeConverters(Converter::class)
 abstract class NewsDatabase: RoomDatabase() {
     abstract fun getNewsDao(): NewsDao
 
