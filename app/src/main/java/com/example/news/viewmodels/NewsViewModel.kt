@@ -15,6 +15,16 @@ class NewsViewModel(private val repository: NewsRepository): ViewModel() {
 
     fun getBreakingNews(countryCode:String) = viewModelScope.launch {
         breakingNews.postValue(Resource.Loading())
-        val response = repository.getBreakingNews(countryCode, pageNumber)
+        val response: Response<Article> = repository.getBreakingNews(countryCode, pageNumber)
+        breakingNews.postValue(getBreakingNewsState(response))
+    }
+
+    private fun getBreakingNewsState(response: Response<Article>): Resource<Article>{
+        if (response.isSuccessful){
+            response.body()?.let { newsArticles ->
+                return Resource.Success(newsArticles)
+            }
+        }
+        return Resource.Failure(response.message())
     }
 }
